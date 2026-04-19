@@ -22,7 +22,13 @@ class PlantsListScreen extends ConsumerWidget {
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Error: $e')),
         data: (plants) {
-          if (plants.isEmpty) return const EmptyPlantsView();
+          if (plants.isEmpty) {
+            return EmptyPlantsView(
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const AddPlantScreen()),
+            ),
+          );
+          }
           return ListView.builder(
             padding: const EdgeInsets.symmetric(vertical: 8),
             itemCount: plants.length,
