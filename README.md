@@ -1,17 +1,59 @@
-# plants
+# Plants
 
-Plant watering reminder app
+A Flutter app for tracking plant watering schedules with background reminders.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+### Plant management
+- Add plants with a name, optional photo, and a watering interval (set in weeks)
+- Edit a plant's name, photo, or watering interval at any time
+- Delete a plant along with its full watering history
 
-A few resources to get you started if this is your first Flutter project:
+### Watering tracking
+- Log a watering event for any plant with a single tap
+- View the complete watering history per plant
+- Plants are sorted by urgency — most overdue appear first
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### Smart notifications
+- Background task periodically checks for overdue plants
+- Sends a local notification when plants need watering
+- Deduplicates: only fires again when the overdue plant set changes
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Platform support
+- Android and iOS
+
+## Developer commands
+
+```bash
+# Install dependencies
+flutter pub get
+
+# Run on a connected device or emulator
+flutter run
+
+# Run all tests
+flutter test
+
+# Run a single test file
+flutter test test/widget_test.dart
+
+# Static analysis / lint
+flutter analyze
+
+# Auto-fix lint issues
+dart fix --apply
+
+# Build Android APK
+flutter build apk
+
+# Build iOS app
+flutter build ios
+```
+
+## Tech stack
+
+- **Flutter / Dart** — UI framework
+- **Riverpod 2** (`AsyncNotifier`) — state management
+- **sqflite** — local SQLite persistence
+- **workmanager** — background task scheduling
+- **flutter_local_notifications** — local push notifications
