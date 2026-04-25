@@ -7,6 +7,7 @@ import '../models/watering_entry.dart';
 import '../repositories/plant_repository.dart';
 import '../repositories/watering_repository.dart';
 import 'database_provider.dart';
+import 'watering_provider.dart';
 
 const _uuid = Uuid();
 
@@ -78,6 +79,7 @@ class PlantsNotifier extends AsyncNotifier<List<Plant>> {
     );
     await _waterings.insert(entry);
     ref.invalidateSelf();
+    ref.invalidate(wateringHistoryProvider(plantId));
   }
 
   Future<void> deletePlant(String plantId) async {
